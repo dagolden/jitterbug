@@ -27318,7 +27318,7 @@
          "version" : "0.002"
       },
       "Sub::Exporter::Progressive" : {
-         "dist" : "Sub-Exporter-Progressive-0.001002",
+         "dist" : "Sub-Exporter-Progressive-0.001003",
          "module" : "Sub::Exporter::Progressive",
          "mymeta" : {
             "abstract" : "Only use Sub::Exporter if you need it",
@@ -27326,7 +27326,7 @@
                "Arthur Axel \"fREW\" Schmidt <frioux+cpan@gmail.com>"
             ],
             "dynamic_config" : 0,
-            "generated_by" : "Dist::Zilla version 4.300020, CPAN::Meta::Converter version 2.120921",
+            "generated_by" : "Dist::Zilla version 4.300021, CPAN::Meta::Converter version 2.120921",
             "license" : [
                "perl_5"
             ],
@@ -27358,17 +27358,17 @@
                   "url" : "git://github.com/frioux/Sub-Exporter-Progressive.git"
                }
             },
-            "version" : "0.001002"
+            "version" : "0.001003"
          },
          "name" : "Sub::Exporter::Progressive",
-         "pathname" : "F/FR/FREW/Sub-Exporter-Progressive-0.001002.tar.gz",
+         "pathname" : "F/FR/FREW/Sub-Exporter-Progressive-0.001003.tar.gz",
          "provides" : {
             "Sub::Exporter::Progressive" : {
                "file" : "Sub/Exporter/Progressive.pm",
-               "version" : "0.001002"
+               "version" : "0.001003"
             }
          },
-         "version" : "0.001002"
+         "version" : "0.001003"
       },
       "Sub::Install" : {
          "dist" : "Sub-Install-0.926",
