@@ -51,7 +51,7 @@ source $PERLBREW_ROOT/etc/bashrc
 
 for perl in $PERLBREW_ROOT/perls/perl-5.*
 do
-  theperl=$($perl -e 'print substr($^V,1')
+  theperl=$($perl -e 'print substr($^V,1)')
 
   logfile="$report_path/perl-$theperl.txt"
 
