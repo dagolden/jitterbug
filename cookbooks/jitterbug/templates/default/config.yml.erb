@@ -1,0 +1,48 @@
+layout: "main"
+logger: "file"
+appname: "jitterbug"
+
+builds_per_feed: 5
+template: "xslate"
+engines:
+  xslate:
+    path:
+      - "<%= node['jitterbug']['deploy_dir'] %>"
+    type: text
+    cache: 0
+
+jitterbug:
+  reports:
+    dir: /tmp/jitterbug
+  build:
+    dir: /tmp/build
+  build_process:
+    builder: ./scripts/perlchef-capsule.sh
+    builder_variables:
+    on_failure: jitterbug::Emailer
+    on_failure_to_email: "<%= node['jitterbug']['on_failure_to_email'] %>"
+    on_failure_cc_email: "<%= node['jitterbug']['on_failure_cc_email'] %>"
+    on_failure_from_email: "<%= node['jitterbug']['on_failure_from_email'] %>"
+    on_failure_subject_prefix: "<%= node['jitterbug']['on_failure_subject_prefix'] %>"
+    on_failure_header:
+    on_failure_footer:
+    on_pass: jitterbug::Emailer
+    on_pass_to_email: "<%= node['jitterbug']['on_pass_to_email'] %>"
+    on_pass_cc_email: "<%= node['jitterbug']['on_pass_cc_email'] %>"
+    on_pass_subject_prefix: "<%= node['jitterbug']['on_pass_subject_prefix'] %>"
+    on_pass_from_email: "<%= node['jitterbug']['on_pass_from_email'] %>"
+    on_pass_header:
+    on_pass_footer:
+    reuse_repo:    1
+  options:
+    email_on_pass: 0
+
+plugins:
+  DBIC:
+    schema:
+      skip_automake: 1
+      pckg: "jitterbug::Schema"
+      connect_info:
+        - "dbi:SQLite:dbname=<%= node['jitterbug']['db_dir'] %>/jitterbug.db"
+
+
