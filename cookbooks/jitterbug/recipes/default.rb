@@ -41,9 +41,6 @@ template "#{node[:nginx][:dir]}/sites-available/jitterbug.conf" do
   owner 'root'
   group 'root'
   mode '0644'
-  variables(
-    :host_name => node[:fqdn]
-  )
 
   if File.exists?("#{node[:nginx][:dir]}/sites-enabled/jitterbug.conf")
     notifies :restart, 'service[nginx]'
