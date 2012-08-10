@@ -10,11 +10,7 @@ function jitterbug_build () {
     if [ -f 'dist.ini' ]; then
         echo "Found dist.ini, using Dist::Zilla" >> $logfile 2>&1
         cpanm Dist::Zilla >> $logfile 2>&1
-        echo "dzil authordeps:" >> $logfile 2>&1
-        dzil authordeps >> $logfile 2>&1
         dzil authordeps | cpanm >> $logfile 2>&1
-        echo "dzil listdeps:" >> $logfile 2>&1
-        dzil listdeps >> $logfile 2>&1
         dzil listdeps | cpanm >> $logfile 2>&1
         HARNESS_VERBOSE=1 HARNESS_TIMER=1 dzil test >> $logfile  2>&1
     elif [ -f 'Build.PL' ]; then

@@ -57,7 +57,8 @@ template "#{node['jitterbug']['conf_dir']}/config.yml" do
   owner node['jitterbug']['user']
   group node['jitterbug']['group']
   mode '0644'
-  notifies :restart, "carton_app[jitterbug]", :delayed
+  notifies :restart, "carton_app[jitterbug]";
+  notifies :restart, "carton_app[jitterbug-builder]";
 end
 
 directory node['jitterbug']['db_dir'] do
@@ -82,10 +83,11 @@ end
 
 carton_app "jitterbug" do
   perlbrew node['jitterbug']['perl_version']
-  command "#{node['jitterbug']['deploy_dir']}/jitterbug.pl -p #{node['jitterbug']['port']} -c #{node['jitterbug']['conf_dir']}/config.yml"
+  command "#{node['jitterbug']['deploy_dir']}/jitterbug.pl -p #{node['jitterbug']['port']}"
   cwd node['jitterbug']['deploy_dir']
   user node['jitterbug']['user']
   group node['jitterbug']['group']
+  environment ({ 'DANCER_CONFDIR' => node['jitterbug']['conf_dir'] })
   action [:enable, :start]
 end
 
