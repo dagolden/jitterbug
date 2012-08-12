@@ -34,6 +34,7 @@ git node['jitterbug']['deploy_dir'] do
   repository node['jitterbug']['deploy_repo']
   reference node['jitterbug']['deploy_tag']
   notifies :restart, "carton_app[jitterbug]"
+  notifies :restart, "carton_app[jitterbug-builder]"
 end
 
 template "#{node[:nginx][:dir]}/sites-available/jitterbug.conf" do
